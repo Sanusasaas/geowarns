@@ -5,7 +5,7 @@ GeoWarns - это система для мониторинга инцидент�
 ## 🛠 Установка и запуск
 
 1. Клонируй репозиторий и перейди в папку: \
-    git clone https://github.com/Sanusasaas/geowarns \
+    git clone https://github.com/Sanusasaas/geo-warns \
     cd geowarns
 2. Запусти проект:
     docker-compose up --build
