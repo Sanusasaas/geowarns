@@ -1,0 +1,20 @@
+FROM golang:1.24.8-alpine AS builder
+
+WORKDIR /app
+
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY cmd/webhook_mock/ .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o /webhook_mock
+
+FROM alpine:latest
+
+WORKDIR /app
+
+COPY --from=builder /webhook_mock /app/webhook_mock
+
+EXPOSE 9090
+
+ENTRYPOINT ["./webhook_mock"]
